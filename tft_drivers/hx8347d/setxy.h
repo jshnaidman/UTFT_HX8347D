@@ -1,4 +1,4 @@
-case HX8347A:
+case HX8347D:
 	LCD_Write_COM_DATA(0x02,x1>>8);
 	LCD_Write_COM_DATA(0x03,x1);
 	LCD_Write_COM_DATA(0x04,x2>>8);

@@ -163,7 +163,7 @@ UTFT::UTFT(byte model, int RS, int WR, int CS, int RST, int SER)
 	byte	dtm[] = {16, 16, 16, 8, 8, 16, 8, SERIAL_4PIN, 16, SERIAL_5PIN,					// 00-09
 					 SERIAL_5PIN, 16, 16, 16, 8, 16, LATCHED_16, 16, 0, 8,					// 10-19
 					 16, 16, 16, 8, SERIAL_5PIN, SERIAL_5PIN, SERIAL_4PIN, 16, 16, 16,		// 20-29
-					 SERIAL_5PIN, SERIAL_5PIN, SERIAL_5PIN, SERIAL_4PIN };								// 30-
+					 SERIAL_5PIN, SERIAL_5PIN, SERIAL_5PIN, SERIAL_4PIN };								// 30-33
 
 #if defined(ESP8266)
 	hwSPI = false;
