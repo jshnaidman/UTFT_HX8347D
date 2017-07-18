@@ -273,6 +273,12 @@ void UTFT::LCD_Write_COM_DATA(char com1,int dat1)
      LCD_Write_DATA(dat1>>8,dat1);
 }
 
+void UTFT::LCD_Write_Register(char com1,int dat1)
+{
+     LCD_Write_COM(com1);
+     LCD_Write_DATA(dat1);
+}
+
 void UTFT::InitLCD(byte orientation)
 {
 	orient=orientation;

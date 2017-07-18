@@ -268,6 +268,7 @@ class UTFT
 		void drawVLine(int x, int y, int l);
 		void printChar(byte c, int x, int y);
 		void setXY(word x1, word y1, word x2, word y2);
+                void LCD_Write_Register(char com1,int dat1);
 		void clrXY();
 		void rotateChar(byte c, int x, int y, int pos, int deg);
 		void _set_direction_registers(byte mode);
