@@ -1,12 +1,14 @@
 case HX8347D:
-    DDRD |= 0x80;
-    PORTD |=  0x80;
-
-    DDRB |= 0x04;
-    PORTB |=  0x04;
-
-    DDRB |= 0x02;
-    PORTB &=~ 0x02;
+    
+    __LCD_DC_OUT();
+    __LCD_DC_SET();
+    
+    __LCD_CS_OUT();
+    __LCD_CS_SET();
+    
+    __LCD_BKL_OUT();
+    __LCD_BKL_OFF();
+   
     
     //Driving ability Setting
 	LCD_Write_Register(0xEA,0x00); //PTBA[15:8]
@@ -85,5 +87,5 @@ case HX8347D:
 	LCD_Write_Register(0x09,0x3F); //Row End
 
     clrScr();
-    PORTB |=  0x02;
+    __LCD_BKL_ON();
     break;
