@@ -177,28 +177,11 @@
 
 #ifndef DISABLE_HX8347D
     #if  defined(__AVR_ATmega32U4__)
-
-        #define __LCD_CS_OUT()    DDRB |= 0x40
-        #define __LCD_CS_CLR()    PORTB &=~ 0x40
-        #define __LCD_CS_SET()    PORTB |=  0x40
-
-        #define __LCD_DC_OUT()    DDRE |= 0x40
-        #define __LCD_DC_CLR()    PORTE &=~ 0x40
-        #define __LCD_DC_SET()    PORTE |=  0x40
-
         #define __LCD_BKL_OUT()   DDRB |= 0x20
         #define __LCD_BKL_OFF()   PORTB &=~ 0x20
         #define __LCD_BKL_ON()    PORTB |=  0x20
 
     #elif defined(__AVR_ATmega328__)
-
-        #define __LCD_CS_OUT()    DDRB |= 0x04
-        #define __LCD_CS_CLR()    PORTB &=~ 0x04
-        #define __LCD_CS_SET()    PORTB |=  0x04
-
-        #define __LCD_DC_OUT()    DDRD |= 0x80
-        #define __LCD_DC_CLR()    PORTD &=~ 0x80
-        #define __LCD_DC_SET()    PORTD |=  0x80
 
         #define __LCD_BKL_OUT()   DDRB |= 0x02
         #define __LCD_BKL_OFF()   PORTB &=~ 0x02
@@ -206,18 +189,8 @@
 
     #else
 
-        #define LCD_DC_PIN         7
         #define LCD_BKL_PIN        9
-        #define LCD_CS_PIN        10
-
-        #define __LCD_CS_OUT()    pinMode(LCD_CS_PIN, OUTPUT)
-        #define __LCD_CS_CLR()    digitalWrite(LCD_CS_PIN, LOW)
-        #define __LCD_CS_SET()    digitalWrite(LCD_CS_PIN, HIGH)
-
-        #define __LCD_DC_OUT()    pinMode(LCD_DC_PIN, OUTPUT)
-        #define __LCD_DC_CLR()    digitalWrite(LCD_DC_PIN, LOW)
-        #define __LCD_DC_SET()    digitalWrite(LCD_DC_PIN, HIGH)
-
+        
         #define __LCD_BKL_OUT()   pinMode(LCD_BKL_PIN, OUTPUT)
         #define __LCD_BKL_OFF()   digitalWrite(LCD_BKL_PIN, LOW)
         #define __LCD_BKL_ON()    digitalWrite(LCD_BKL_PIN, HIGH)

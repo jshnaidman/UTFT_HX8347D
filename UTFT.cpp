@@ -239,8 +239,10 @@ void UTFT::LCD_Write_COM(char VL)
 		cbi(P_RS, B_RS);
 		LCD_Writ_Bus(0x00,VL,display_transfer_mode);
 	}
-	else
-		LCD_Writ_Bus(0x00,VL,display_transfer_mode);
+	else{
+            LCD_Writ_Bus(0x00,VL,display_transfer_mode);
+        }
+	
 }
 
 void UTFT::LCD_Write_DATA(char VH,char VL)
@@ -252,8 +254,8 @@ void UTFT::LCD_Write_DATA(char VH,char VL)
 	}
 	else
 	{
-		LCD_Writ_Bus(0x01,VH,display_transfer_mode);
-		LCD_Writ_Bus(0x01,VL,display_transfer_mode);
+            LCD_Writ_Bus(0x01,VH,display_transfer_mode);
+            LCD_Writ_Bus(0x01,VL,display_transfer_mode);
 	}
 }
 
@@ -264,8 +266,10 @@ void UTFT::LCD_Write_DATA(char VL)
 		sbi(P_RS, B_RS);
 		LCD_Writ_Bus(0x00,VL,display_transfer_mode);
 	}
-	else
-		LCD_Writ_Bus(0x01,VL,display_transfer_mode);
+	else{
+            LCD_Writ_Bus(0x01,VL,display_transfer_mode);
+        }
+                
 }
 
 void UTFT::LCD_Write_COM_DATA(char com1,int dat1)
@@ -274,10 +278,10 @@ void UTFT::LCD_Write_COM_DATA(char com1,int dat1)
      LCD_Write_DATA(dat1>>8,dat1);
 }
 
-void UTFT::LCD_Write_Register(char com1,int dat1)
+void UTFT::LCD_Write_Register(char com1, int dat1)
 {
-     LCD_Write_COM(com1);
-     LCD_Write_DATA(dat1);
+    LCD_Write_COM(com1);
+    LCD_Write_DATA(dat1);
 }
 
 void UTFT::InitLCD(byte orientation)
@@ -315,9 +319,6 @@ void UTFT::InitLCD(byte orientation)
 	{
 #ifndef DISABLE_HX8347A
 	#include "tft_drivers/hx8347a/initlcd.h"
-#endif
-#ifndef DISABLE_HX8347D
-	#include "tft_drivers/hx8347d/initlcd.h"
 #endif
 #ifndef DISABLE_ILI9327
 	#include "tft_drivers/ili9327/initlcd.h"
@@ -400,6 +401,9 @@ void UTFT::InitLCD(byte orientation)
 #ifndef DISABLE_ILI9225B
 	#include "tft_drivers/ili9225b/initlcd.h"
 #endif
+#ifndef DISABLE_HX8347D
+	#include "tft_drivers/hx8347d/initlcd.h"
+#endif
 	}
 
 	sbi (P_CS, B_CS); 
@@ -425,9 +429,6 @@ void UTFT::setXY(word x1, word y1, word x2, word y2)
 	{
 #ifndef DISABLE_HX8347A
 	#include "tft_drivers/hx8347a/setxy.h"
-#endif
-#ifndef DISABLE_HX8347D
-	#include "tft_drivers/hx8347d/setxy.h"
 #endif
 #ifndef DISABLE_HX8352A
 	#include "tft_drivers/hx8352a/setxy.h"
@@ -509,6 +510,9 @@ void UTFT::setXY(word x1, word y1, word x2, word y2)
 #endif
 #ifndef DISABLE_ILI9225B
 	#include "tft_drivers/ili9225b/setxy.h"
+#endif
+#ifndef DISABLE_HX8347D
+	#include "tft_drivers/hx8347d/setxy.h"
 #endif
 	}
 }

@@ -40,7 +40,7 @@
 #define DISABLE_ST7735_ALT		1	// TFT01_18SHLD
 #define DISABLE_ST7735S			1	// TFT01_18SP
 #define DISABLE_ILI9225B
-//#define DISABLE_HX8347D
+//#define DISABLE_HX8347D				1	
 
 
 // ----------------------------------------------------------------------------

@@ -1,10 +1,6 @@
 case HX8347D:
     
-    __LCD_DC_OUT();
-    __LCD_DC_SET();
-    
-    __LCD_CS_OUT();
-    __LCD_CS_SET();
+    sbi(P_RS,B_RS);
     
     __LCD_BKL_OUT();
     __LCD_BKL_OFF();
@@ -76,16 +72,15 @@ case HX8347D:
 	LCD_Write_Register(0x28,0x3F); //GON=1, DTE=1, D=1100
 
 	LCD_Write_Register(0x16,0x18); 
-	//Set GRAM Area
-	LCD_Write_Register(0x02,0x00);
+        LCD_Write_Register(0x02,0x00);
 	LCD_Write_Register(0x03,0x00); //Column Start
 	LCD_Write_Register(0x04,0x00);
 	LCD_Write_Register(0x05,0xEF); //Column End
 	LCD_Write_Register(0x06,0x00);
 	LCD_Write_Register(0x07,0x00); //Row Start
 	LCD_Write_Register(0x08,0x01);
-	LCD_Write_Register(0x09,0x3F); //Row End
+	LCD_Write_Register(0x09,0x3F); //Row End 
 
-    clrScr();
     __LCD_BKL_ON();
+    clrScr();
     break;
