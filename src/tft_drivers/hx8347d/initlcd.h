@@ -1,11 +1,43 @@
 case HX8347D:
-    
+
+  #if  defined(__AVR_ATmega32U4__)
+    // pin 9
+      #define __LCD_BKL_OUT()   DDRB |= 0x20
+      #define __LCD_BKL_OFF()   PORTB &=~ 0x20
+      #define __LCD_BKL_ON()    PORTB |=  0x20
+
+  #elif defined(__AVR_ATmega328__)
+      //pin 9
+      #define __LCD_BKL_OUT()   DDRB |= 0x02
+      #define __LCD_BKL_OFF()   PORTB &=~ 0x02
+      #define __LCD_BKL_ON()    PORTB |=  0x02
+
+  #elif defined(ESP8266)
+
+    #define LCD_BKL_PIN        6
+
+    #define __LCD_BKL_OUT()   pinMode(LCD_BKL_PIN, OUTPUT)
+    #define __LCD_BKL_OFF()   digitalWrite(LCD_BKL_PIN, LOW)
+    #define __LCD_BKL_ON()    digitalWrite(LCD_BKL_PIN, HIGH)
+
+  #else
+
+      #define LCD_BKL_PIN        9
+
+      #define __LCD_BKL_OUT()   pinMode(LCD_BKL_PIN, OUTPUT)
+      #define __LCD_BKL_OFF()   digitalWrite(LCD_BKL_PIN, LOW)
+      #define __LCD_BKL_ON()    digitalWrite(LCD_BKL_PIN, HIGH)
+
+  #endif
+
+
+
     sbi(P_RS,B_RS);
-    
+
     __LCD_BKL_OUT();
     __LCD_BKL_OFF();
-   
-    
+
+
     //Driving ability Setting
 	LCD_Write_Register(0xEA,0x00); //PTBA[15:8]
 	LCD_Write_Register(0xEB,0x20); //PTBA[7:0]
@@ -71,15 +103,15 @@ case HX8347D:
 	delay(40);
 	LCD_Write_Register(0x28,0x3F); //GON=1, DTE=1, D=1100
 
-	LCD_Write_Register(0x16,0x18); 
-        LCD_Write_Register(0x02,0x00);
+	LCD_Write_Register(0x16,0x18);
+  LCD_Write_Register(0x02,0x00);
 	LCD_Write_Register(0x03,0x00); //Column Start
 	LCD_Write_Register(0x04,0x00);
 	LCD_Write_Register(0x05,0xEF); //Column End
 	LCD_Write_Register(0x06,0x00);
 	LCD_Write_Register(0x07,0x00); //Row Start
 	LCD_Write_Register(0x08,0x01);
-	LCD_Write_Register(0x09,0x3F); //Row End 
+	LCD_Write_Register(0x09,0x3F); //Row End
 
     __LCD_BKL_ON();
     clrScr();

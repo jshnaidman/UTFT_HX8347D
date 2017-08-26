@@ -1,28 +1,28 @@
 /*
   UTFT.h - Multi-Platform library support for Color TFT LCD Boards
   Copyright (C)2015 Rinky-Dink Electronics, Henning Karlsen. All right reserved
-  
+
   This library is the continuation of my ITDB02_Graph, ITDB02_Graph16
-  and RGB_GLCD libraries for Arduino and chipKit. As the number of 
-  supported display modules and controllers started to increase I felt 
-  it was time to make a single, universal library as it will be much 
+  and RGB_GLCD libraries for Arduino and chipKit. As the number of
+  supported display modules and controllers started to increase I felt
+  it was time to make a single, universal library as it will be much
   easier to maintain in the future.
 
-  Basic functionality of this library was origianlly based on the 
-  demo-code provided by ITead studio (for the ITDB02 modules) and 
+  Basic functionality of this library was origianlly based on the
+  demo-code provided by ITead studio (for the ITDB02 modules) and
   NKC Electronics (for the RGB GLCD module/shield).
 
-  This library supports a number of 8bit, 16bit and serial graphic 
-  displays, and will work with both Arduino, chipKit boards and select 
+  This library supports a number of 8bit, 16bit and serial graphic
+  displays, and will work with both Arduino, chipKit boards and select
   TI LaunchPads. For a full list of tested display modules and controllers,
   see the document UTFT_Supported_display_modules_&_controllers.pdf.
 
-  When using 8bit and 16bit display modules there are some 
-  requirements you must adhere to. These requirements can be found 
+  When using 8bit and 16bit display modules there are some
+  requirements you must adhere to. These requirements can be found
   in the document UTFT_Requirements.pdf.
   There are no special requirements when using serial displays.
 
-  You can find the latest version of the library at 
+  You can find the latest version of the library at
   http://www.RinkyDinkElectronics.com/
 
   This library is free software; you can redistribute it and/or
@@ -33,7 +33,7 @@
   will allow commercial use. This includes using the library,
   modified or not, as a tool to sell products.
 
-  The license applies to all part of the library including the 
+  The license applies to all part of the library including the
   examples and tools supplied with the library.
 */
 
@@ -117,8 +117,8 @@
 #define ITDB24E_16		15	// S6D1121	(16bit)
 #define INFINIT32		16	// SSD1289	(Latched 16bit) -- Legacy, will be removed later
 #define ELEE32_REVA		16	// SSD1289	(Latched 16bit)
-#define CTE32_R2		17	
-//#define NOT_IN_USE	18	
+#define CTE32_R2		17
+//#define NOT_IN_USE	18
 #define ELEE32_REVB		19	// SSD1289	(8bit)
 #define TFT01_70		20	// SSD1963	(16bit) 800x480 Alternative Init
 #define CTE70			20	// SSD1963	(16bit) 800x480 Alternative Init
@@ -170,36 +170,6 @@
 #define VGA_FUCHSIA		0xF81F
 #define VGA_PURPLE		0x8010
 #define VGA_TRANSPARENT	0xFFFFFFFF
-
-
-
-
-
-#ifndef DISABLE_HX8347D
-    #if  defined(__AVR_ATmega32U4__)
-        #define __LCD_BKL_OUT()   DDRB |= 0x20
-        #define __LCD_BKL_OFF()   PORTB &=~ 0x20
-        #define __LCD_BKL_ON()    PORTB |=  0x20
-
-    #elif defined(__AVR_ATmega328__)
-
-        #define __LCD_BKL_OUT()   DDRB |= 0x02
-        #define __LCD_BKL_OFF()   PORTB &=~ 0x02
-        #define __LCD_BKL_ON()    PORTB |=  0x02
-
-    #else
-
-        #define LCD_BKL_PIN        9
-        
-        #define __LCD_BKL_OUT()   pinMode(LCD_BKL_PIN, OUTPUT)
-        #define __LCD_BKL_OFF()   digitalWrite(LCD_BKL_PIN, LOW)
-        #define __LCD_BKL_ON()    digitalWrite(LCD_BKL_PIN, HIGH)
-
-    #endif
-#endif
-
-
-
 
 
 #if defined(__AVR__)
@@ -282,8 +252,8 @@ class UTFT
 		byte			orient;
 		long			disp_x_size, disp_y_size;
 		byte			display_model, display_transfer_mode, display_serial_mode;
-		regtype			*P_RS, *P_WR, *P_CS, *P_RST, *P_SDA, *P_SCL, *P_ALE;
-		regsize			B_RS, B_WR, B_CS, B_RST, B_SDA, B_SCL, B_ALE;
+		regtype			*P_RS, *P_WR, *P_CS, *P_RST, *P_SDA, *P_SCL, *P_ALE, *P_BKL;
+		regsize			B_RS, B_WR, B_CS, B_RST, B_SDA, B_SCL, B_ALE, B_BKL;
 		byte			__p1, __p2, __p3, __p4, __p5;
 		_current_font	cfont;
 		boolean			_transparent;

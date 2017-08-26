@@ -1,7 +1,6 @@
 {
   "name": "Jacob Shnaidman",
-  "Description": "A fork of the ESP8266 compatible UTFT library by Gnulabis.
-                  This fork supports the HX8347D based TFT module",
+  "Description": "A fork of the ESP8266 compatible UTFT library by Gnulabis. \n This fork supports the HX8347D based TFT module",
   "authors":
   {
     "name": "Jacob Shnaidman",
@@ -13,8 +12,5 @@
     "type": "git",
     "url": "https://github.com/jshnaidman/UTFT_ESP8266_HX8347D.git"
   },
-  "platforms":{
-    "Arduino",
-    "ESP8266"
-  }
+  "platforms": ["Arduino","ESP8266"]
 }
