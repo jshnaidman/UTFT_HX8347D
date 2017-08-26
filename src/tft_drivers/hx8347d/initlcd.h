@@ -22,11 +22,11 @@ case HX8347D:
 
   #else
 
-      #define LCD_BKL_PIN        9
+    #define LCD_BKL_PIN        9
 
-      #define __LCD_BKL_OUT()   pinMode(LCD_BKL_PIN, OUTPUT)
-      #define __LCD_BKL_OFF()   digitalWrite(LCD_BKL_PIN, LOW)
-      #define __LCD_BKL_ON()    digitalWrite(LCD_BKL_PIN, HIGH)
+    #define __LCD_BKL_OUT()   pinMode(LCD_BKL_PIN, OUTPUT)
+    #define __LCD_BKL_OFF()   digitalWrite(LCD_BKL_PIN, LOW)
+    #define __LCD_BKL_ON()    digitalWrite(LCD_BKL_PIN, HIGH)
 
   #endif
 
@@ -113,6 +113,6 @@ case HX8347D:
 	LCD_Write_Register(0x08,0x01);
 	LCD_Write_Register(0x09,0x3F); //Row End
 
-    __LCD_BKL_ON();
-    clrScr();
-    break;
+  __LCD_BKL_ON();
+  clrScr();
+  break;
