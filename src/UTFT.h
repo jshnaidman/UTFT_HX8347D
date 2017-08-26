@@ -52,7 +52,7 @@
 #define HX8347A			0
 #define ILI9327			1
 #define SSD1289			2
-#define ILI9325C		3HX8347D
+#define ILI9325C		3
 #define ILI9325D_8		4
 #define ILI9325D_16		5
 #define HX8340B_8		6
